@@ -1,54 +1,47 @@
-# 📱 Desenvolvimento Mobile
+# Desenvolvimento Mobile
 
 ## 📝 Descrição do Projeto/Atividade
-[Descreva brevemente o projeto prático que você escolheu colocar aqui. Ex: "Desenvolvimento de um aplicativo de previsão do tempo em React Native e TypeScript, integrado com a API OpenWeatherMap."]
-
----
+Criação de um aplicativo demonstrativo utilizando React Native e Expo para o aprendizado prático de posicionamento de elementos em telas móveis. O projeto foca na aplicação e estilização de estruturas usando o sistema Flexbox, simulando a distribuição de blocos de conteúdo de forma responsiva em diferentes tamanhos de telas de smartphones.
 
 ## 🧠 Reflexão de Aprendizado
-
 ### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras os conceitos teóricos e práticos de desenvolvimento mobile que você aprendeu com esta atividade, tais como: componentes, Hooks do React (useState, useEffect), tratamento de estados assíncronos, consumo de APIs, estilização, etc.]
+Aprendi a iniciar um ecossistema de desenvolvimento móvel utilizando o Expo com TypeScript, compreendendo como os componentes nativos são renderizados. Pratiquei conceitos fundamentais de Flexbox aplicados ao Mobile, assimilando que, diferentemente da Web, a propriedade `flexDirection` no React Native adota o padrão `column` (coluna). Compreendi como manipular o alinhamento dos eixos com `justifyContent` (eixo principal) e `alignItems` (eixo cruzado) usando a folha de estilos otimizada `StyleSheet.create`.
 
 ### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Explique qual a relevância de aprender a desenvolver aplicativos móveis nativos/híbridos com React Native para o mercado de trabalho atual. Qual problema real esta competência resolve no dia a dia corporativo?]
-
----
+Dominar o Flexbox no desenvolvimento mobile é essencial para construir interfaces fluidas que se adaptam automaticamente a qualquer tamanho, proporção ou resolução de tela de celular (Android e iOS). Compreender o comportamento de layouts móveis evita que elementos fiquem cortados ou sobrepostos, garantindo a usabilidade, acessibilidade e uma experiência profissional para o usuário final.
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
-*   React Native / Expo
-*   TypeScript
-*   [Outra biblioteca, ex: Axios, React Navigation, React Native Vector Icons]
-
----
+* React Native (Componentes nativos como View e Text)
+* Expo (Framework e CLI de desenvolvimento mobile)
+* TypeScript (Tipagem estática e segurança no código)
+* Flexbox (Sistema de estilização e alinhamento de layout)
 
 ## 💻 Demonstração e Como Rodar
 
 ### Código Relevante Comentado
-[Insira aqui um trecho de código TypeScript/React Native que foi crucial para o projeto, comentando as linhas mais importantes para demonstrar seu entendimento. Exemplo:]
-```tsx
-// Exemplo de código (substitua pelo seu):
-const fetchWeatherData = async (city: string) => {
-  try {
-    setLoading(true);
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=SUA_API_KEY`);
-    const data = await response.json();
-    setWeather(data);
-  } catch (err) {
-    setError('Não foi possível carregar os dados de clima.');
-  } finally {
-    setLoading(false);
+Abaixo está o trecho estruturado no arquivo App.tsx demonstrando o container que alinha as caixas horizontalmente:
+
+const styles = StyleSheet.create({
+  containerFlex: {
+    flex: 1, // Ocupa todo o espaço disponível do bloco
+    flexDirection: 'row', // Organiza os elementos filhos em linha (horizontal)
+    justifyContent: 'space-around', // Distribui os itens criando espaços iguais ao redor deles
+    alignItems: 'center', // Centraliza os itens verticalmente no eixo oposto
+    backgroundColor: '#e2e8f0',
+    borderRadius: 10,
   }
-};
-```
+});
 
 ### Instruções para Executar
-1. Instale as dependências na pasta do projeto:
-   ```bash
+Como este projeto utiliza Node.js, Expo e TypeScript, siga as instruções abaixo no terminal de dentro da pasta do aplicativo (my-app):
+
+1. Instale as dependências do projeto:
    npm install
-   ```
-2. Inicialize o servidor de desenvolvimento do Expo:
-   ```bash
+
+2. Inicie o servidor de desenvolvimento do Expo:
    npx expo start
-   ```
-3. Use o aplicativo Expo Go em seu dispositivo móvel ou um emulador Android/iOS para visualizar.
+
+3. Para visualizar a aplicação:
+   * Abra o aplicativo "Expo Go" no seu celular e escaneie o código QR exibido no terminal.
+   * Ou pressione "a" no teclado se tiver um emulador Android configurado.
+   * Ou pressione "i" no teclado se tiver um simulador iOS configurado (macOS).
