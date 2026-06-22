@@ -1,45 +1,45 @@
-# 🔧 Versionamento e Gestão de Código
+# Depuração e Controle de Estados
 
 ## 📝 Descrição do Projeto/Atividade
-Este projeto consiste na própria **gestão, organização e controle de versão deste Portfólio**. Nele, apliquei conceitos avançados de controle de versão exigidos no mercado de trabalho para garantir a rastreabilidade e legibilidade do histórico de desenvolvimento do software.
-
----
+Atividade prática focada na implementação e depuração de fluxos de dados utilizando o Redux clássico de forma nativa (Vanilla JS). O objetivo principal é analisar o comportamento das actions e reducers através da extensão Redux DevTools, inspecionando o histórico de mutações e simulando o comportamento de "Time-Travel" (viagem no tempo) para rastrear e corrigir o estado da aplicação em tempo real.
 
 ## 🧠 Reflexão de Aprendizado
-
 ### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras o que é e para que serve o padrão adotado neste projeto:]
-*   **Conventional Commits (Commits Convencionais):** [O que é e quais regras principais você seguiu para escrever mensagens de commits?]
+Aprendi a configurar a arquitetura Redux convencional utilizando a função `createStore` e a criar funções `reducer` puras para manipular o estado de maneira previsível. Pratiquei a integração com ferramentas avançadas de diagnóstico ao injetar a propriedade global `__REDUX_DEVTOOLS_EXTENSION__` no código. Com isso, compreendi como monitorar o disparo de ações via `store.dispatch` diretamente pelas ferramentas de desenvolvedor do navegador (F12).
 
 ### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Por que grandes empresas e projetos open-source utilizam essa convenção de histórico? Como isso ajuda na colaboração de grandes equipes e no rastreamento de mudanças e bugs?]
+Saber inspecionar e rastrear o histórico de alterações no código serve para diagnosticar falhas lógicas complexas e entender exatamente quando e por que um dado mudou de valor. Aprendi isso porque, em ambientes de desenvolvimento profissionais, o controle rigoroso sobre os estados do software reduz o tempo de manutenção, evita comportamentos imprevistos na interface e garante que a aplicação seja altamente estável antes de ser enviada ao usuário.
 
----
+## 🛠️ Tecnologias e Ferramentas Utilizadas
+* HTML5 / JavaScript (ES6+ Nativo)
+* Redux (Biblioteca via CDN para fluxo de dados)
+* Redux DevTools Extension (Ferramenta de inspeção e debug de estados)
+* Chrome DevTools / Console do navegador (Análise de logs e execução)
 
-## 💻 Demonstração das Práticas de Versionamento
+## 💻 Demonstração e Como Rodar
 
-### Histórico de Commits Semânticos
-[Insira abaixo exemplos reais de mensagens de commit que você efetuou durante a construção deste portfólio. Indique o tipo e o escopo de cada um.]
+### Código Relevante Comentado
+Abaixo está o bloco central do arquivo index.html que inicializa a store e ativa a ponte de comunicação com a extensão do navegador:
 
-*   `feat(mobile): ...` (Explicar o commit)
-*   `docs(readme): ...` (Explicar o commit)
-*   `fix(backend): ...` (Explicar o commit)
-*   `chore: ...` (Explicar o commit)
+// Reducer que recebe a ação e gera o novo estado de tarefas
+function reducer(state = { tasks: [] }, action) {
+  if (action.type === 'ADD') return { tasks: [...state.tasks, action.text] };
+  return state;
+}
 
----
+// Criação da store integrando o middleware visual do Redux DevTools
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-## 🛠️ Comandos Git Utilizados
-Abaixo estão os comandos Git executados para manter e estruturar este repositório:
+// Disparos iniciais para simular a linha do tempo no debugger
+store.dispatch({ type: 'ADD', text: 'Aprender Redux DevTools' });
 
-*   **Para criar e comitar no padrão convencional:**
-    ```bash
-    # Registrar alterações
-    git add .
-    
-    # Commitar seguindo o padrão convencional
-    git commit -m "docs(readme): update mobile documentation details"
-    ```
-*   **Para enviar as alterações ao repositório remoto (GitHub):**
-    ```bash
-    git push origin main
-    ```
+### Instruções para Executar
+Siga as etapas abaixo para visualizar o comportamento do fluxo de dados:
+
+1. Instale a extensão "Redux DevTools" na loja de complementos do seu navegador.
+2. Abra o arquivo index.html diretamente no navegador de sua preferência.
+3. Pressione a tecla F12 no teclado para abrir as Ferramentas do Desenvolvedor.
+4. Clique na aba "Redux" para visualizar a linha do tempo, as actions disparadas e o estado se atualizando dinamicamente.
