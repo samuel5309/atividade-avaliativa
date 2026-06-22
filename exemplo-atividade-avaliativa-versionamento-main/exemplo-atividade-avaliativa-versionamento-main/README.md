@@ -1,7 +1,7 @@
 # 🚀 Hub de Projetos & Portfólio Técnico
 
 ## 👤 Identificação do Estudante
-*   **Nome:** [Seu Nome Completo aqui]
+*   **Nome:** welington samuel gonçalves silva
 *   **Curso:** Técnico em Desenvolvimento de Sistemas
 *   **Período:** 2º Bimestre / Ano Corrente
 
