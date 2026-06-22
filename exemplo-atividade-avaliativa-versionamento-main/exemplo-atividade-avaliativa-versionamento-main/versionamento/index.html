@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Testando DevTools</title>
+</head>
+<body>
+    <h1>Abra o Console e a aba Redux do seu Navegador (F12)</h1>
+    <script src="https://cloudflare.com"></script>
+    <script>
+        const { createStore } = Redux;
+
+        function reducer(state = { tasks: [] }, action) {
+            if(action.type === 'ADD') return { tasks: [...state.tasks, action.text] };
+            return state;
+        }
+
+        const store = createStore(
+            reducer,
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        );
+
+        store.dispatch({ type: 'ADD', text: 'Aprender Redux DevTools' });
+        store.dispatch({ type: 'ADD', text: 'Dominar o Time-Travel' });
+    </script>
+</body>
+</html>
