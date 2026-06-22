@@ -1,50 +1,58 @@
-# 💻 Desenvolvimento Front-end
+# Desenvolvimento Front-end
 
-## 📝 Descrição do Projeto/Atividade
-[Descreva brevemente o projeto prático que você escolheu colocar aqui. Ex: "Criação de um painel/dashboard web responsivo para gerenciamento de finanças pessoais, com gráficos interativos e controle de saldo."]
+📝 Descrição do Projeto/Atividade
+Criação de uma aplicação web de contador interativo com gerenciamento de estado global centralizado através do Redux Toolkit. O projeto conta com uma interface moderna integrada a uma folha de estilos avançada, apresentando total responsividade para dispositivos móveis e suporte nativo ao Modo Escuro (Dark Mode) baseado no sistema do usuário.
 
----
+🧠 Reflexão de Aprendizado
+1. O que aprendi?
+Aprendi a estruturar um projeto moderno utilizando o React junto ao ecossistema do Vite. Compreendi os conceitos fundamentais de gerenciamento de estado global com Redux Toolkit, utilizando ferramentas como `createSlice` para unificar reducers e actions de forma limpa, evitando o prop drilling. No CSS moderno, aprofundivei conhecimentos em arquitetura com variáveis nativas (`:root`), aninhamento de seletores (nesting), pseudo-elementos (`::before` e `::after`) e media queries para responsividade.
 
-## 🧠 Reflexão de Aprendizado
+2. Para que serve (Por que aprendi)?
+O gerenciamento de estado centralizado serve para construir aplicações web escaláveis e previsíveis no mercado de trabalho real, onde múltiplos componentes precisam acessar e alterar o mesmo dado de forma organizada. Estilizar interfaces elegantes, acessíveis e que suportam preferências do usuário (como o Modo Escuro) é essencial para garantir uma excelente experiência de uso (UI/UX) e acessibilidade em qualquer tipo de dispositivo.
 
-### 1. O que aprendi?
-[Substitua este texto por sua resposta. Explique em suas palavras os conceitos de front-end que você aprendeu com esta atividade, tais como: semântica HTML, estilização com CSS moderno (Grid/Flexbox), componentização, interatividade em JavaScript, manipulação do DOM ou o uso de bibliotecas/frameworks.]
+🛠️ Tecnologias e Ferramentas Utilizadas
+* HTML5 / CSS3 Avançado
+* JavaScript (ES6+)
+* React (Componentização e Hooks)
+* Vite (Ambiente de Desenvolvimento rápido)
+* Redux Toolkit & React-Redux (Arquitetura de Estado Global)
 
-### 2. Para que serve (Por que aprendi)?
-[Substitua este texto por sua resposta. Explique por que é importante criar interfaces web bonitas, amigáveis, acessíveis e responsivas. Qual o impacto de um bom desenvolvimento front-end no produto final e na experiência do usuário?]
+💻 Demonstração e Como Rodar
 
----
+Código Relevante Comentado
+Abaixo está o trecho do arquivo `App.jsx` que demonstra a criação da store global do Redux e a alteração lógica do contador:
 
-## 🛠️ Tecnologias e Ferramentas Utilizadas
-*   HTML5 / CSS3 (Vanilla)
-*   JavaScript (ES6+)
-*   [Outra biblioteca ou ferramenta, ex: React, TailwindCSS, Chart.js]
-
----
-
-## 💻 Demonstração e Como Rodar
-
-### Código Relevante Comentado
-[Insira aqui um trecho de código CSS, JS ou HTML que foi crucial para a estrutura ou lógica do projeto, comentando as linhas mais importantes. Exemplo:]
-```javascript
-// Exemplo de código (substitua pelo seu):
-const updateUI = (transactions) => {
-  const listElement = document.getElementById('transaction-list');
-  listElement.innerHTML = ''; // Limpa a lista anterior
-  
-  transactions.forEach(transaction => {
-    const item = document.createElement('li');
-    item.classList.add(transaction.type === 'income' ? 'income-item' : 'expense-item');
-    item.innerHTML = `${transaction.name} <span>R$ ${transaction.amount.toFixed(2)}</span>`;
-    listElement.appendChild(item);
-  });
-};
+```jsx
+// Criação do Slice do Redux unificando o estado e as regras de negócio
+const contadorSlice = createSlice({
+  name: 'contador',
+  initialState: { valor: 0 }, // Define o valor inicial do estado
+  reducers: {
+    incrementar: (state) => {
+      state.valor += 1; // Incrementa o estado de forma simples usando Immer internamente
+    },
+    decrementar: (state) => {
+      state.valor -= 1; // Decrementa o valor
+    },
+    incrementarPorValor: (state, action) => {
+      state.valor += action.payload; // Adiciona um valor dinâmico enviado via parâmetro
+    }
+  }
+});
 ```
 
-### Instruções para Executar
-1. Se for um projeto estático em HTML/CSS/JS:
-   - Abra o arquivo `index.html` diretamente em seu navegador web, ou utilize a extensão **Live Server** no VS Code para rodar localmente.
-2. Se for um projeto utilizando Node.js/Vite/React:
-   - Instale as dependências: `npm install`
-   - Execute o servidor local: `npm run dev`
-   - Acesse o link fornecido no console (ex: `http://localhost:5173`).
+Instruções para Executar
+Como este projeto utiliza Node.js, Vite e React, siga as instruções de terminal abaixo de dentro da pasta do projeto:
+
+1. Instale todas as dependências do projeto:
+   ```bash
+   npm install
+   ```
+
+2. Inicialize o servidor de desenvolvimento local:
+   ```bash
+   npm run dev
+   ```
+
+3. Acesse o link gerado no seu terminal para visualizar a aplicação:
+   * Endereço padrão: `http://localhost:5173`
